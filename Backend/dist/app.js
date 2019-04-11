@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const Routes_1 = require("./routes/Routes");
 class App {
     constructor() {
@@ -18,6 +19,7 @@ class App {
         mongoose.connect(this.mongoUrl);
     }
     config() {
+        this.app.use(cors());
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
     }
